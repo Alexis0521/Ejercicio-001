@@ -1,0 +1,4 @@
+Tiempo por VALOR (Copias): 0.518910 segundos
+Tiempo por PUNTERO (Ref):  0.000362 segundos
+
+CONCLUSI‡N: Usar punteros fue 1433.45x veces m†s r†pido.

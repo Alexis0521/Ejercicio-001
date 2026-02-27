@@ -1,0 +1,33 @@
+makefile:11: warning: overriding recipe for target 'all'
+makefile:5: warning: ignoring old recipe for target 'all'
+gcc -O2 -std=c11 cache_demo.c -o cache_demo
+valgrind --tool=cachegrind --cache-sim=yes --branch-sim=yes ./cache_demo c
+==22== Cachegrind, a cache and branch-prediction profiler
+==22== Copyright (C) 2002-2017, and GNU GPL'd, by Nicholas Nethercote et al.
+==22== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==22== Command: ./cache_demo c
+==22== 
+--22-- warning: L3 cache found, using its data for the LL simulation.
+N = 4096
+Suma (ignorar): 2139095040
+Por columnas: 0.942167 s
+==22== 
+==22== I   refs:      201,486,490
+==22== I1  misses:          1,486
+==22== LLi misses:          1,477
+==22== I1  miss rate:        0.00%
+==22== LLi miss rate:        0.00%
+==22== 
+==22== D   refs:       67,155,541  (33,587,087 rd   + 33,568,454 wr)
+==22== D1  misses:     17,828,145  (16,778,911 rd   +  1,049,234 wr)
+==22== LLd misses:     17,827,858  (16,778,657 rd   +  1,049,201 wr)
+==22== D1  miss rate:        26.5% (      50.0%     +        3.1%  )
+==22== LLd miss rate:        26.5% (      50.0%     +        3.1%  )
+==22== 
+==22== LL refs:        17,829,631  (16,780,397 rd   +  1,049,234 wr)
+==22== LL misses:      17,829,335  (16,780,134 rd   +  1,049,201 wr)
+==22== LL miss rate:          6.6% (       7.1%     +        3.1%  )
+==22== 
+==22== Branches:       33,580,640  (33,580,275 cond +        365 ind)
+==22== Mispredicts:         7,174  (     6,991 cond +        183 ind)
+==22== Mispred rate:          0.0% (       0.0%     +       50.1%   )

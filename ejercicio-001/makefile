@@ -1,3 +1,12 @@
+TARGET = mi_programa
+LOG_FILE = registro_valgrind.txt
+
+all:
+	gcc -g main.c -o $(TARGET)
+
+valgrind: all
+	valgrind --leak-check=full --log-file=$(LOG_FILE) ./$(TARGET)
+	@echo "Registro guardado en $(LOG_FILE)"
 all: clean compilar
 	
 clean:
